@@ -1,0 +1,17 @@
+---
+- name: install pre-reqs
+  include: pre-reqs.yml
+
+- name: setup lsio site ghost container
+  docker_container:
+    name: lsio_ghost
+    image: ghost
+    state: started
+    restart: always
+    ports:
+      - "80:2368"
+      - "443:443"
+    volumes:
+      - /opt/ghost:/var/lib/ghost
+    env:
+      NODE_ENV: production

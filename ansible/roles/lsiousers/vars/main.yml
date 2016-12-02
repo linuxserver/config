@@ -7,4 +7,4 @@ user_groups:
 users:
   - { name: lsio, groups: sudo,wheel,docker, sshkeys: linuxserver.keys}
   - { name: ironicbadger, groups: docker, sshkeys: ironicbadger.keys}
-  - { name: s7ark, groups: docker, sshkeys: s7ark.keys}
+  - { name: s7ark, groups: docker, sshkeys: jagfin1.keys}

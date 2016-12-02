@@ -1,0 +1,10 @@
+---
+- name: install packages
+  apt: pkg={{ item }} state=present
+  with_items:
+    - python-setuptools
+
+- name: install docker-py
+  easy_install:
+    name: docker-py
+    state: latest

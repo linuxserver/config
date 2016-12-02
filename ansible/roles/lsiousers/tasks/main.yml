@@ -4,7 +4,6 @@
     name: "{{ item }}"
     state: present
   with_items: "{{ user_groups }}"
-  become: true
 
 - name: create new users
   user:
@@ -12,11 +11,9 @@
     state: present
     groups: "{{ item.groups }}"
   with_items: "{{ users }}"
-  become: true
 
 - name: add SSH authorized_keys from github
   authorized_key:
     user: "{{ item.name }}"
     key: "https://github.com/{{ item.sshkeys }}"
   with_items: "{{ users }}"
-  become: true
