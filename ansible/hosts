@@ -1,2 +1,2 @@
 [lsio]
-lsio
+138.68.135.42   ansible_connection=ssh        ansible_user=root ansible_python_interpreter=/usr/bin/python

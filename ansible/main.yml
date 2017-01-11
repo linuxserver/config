@@ -8,6 +8,7 @@
     - common
     - docker
     - lsiousers
+    - lsiosite
     #- ssh
     #- docker
     #- lsiosite

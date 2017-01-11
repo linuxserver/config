@@ -2,12 +2,29 @@
 - name: install pre-reqs
   include: pre-reqs.yml
 
+- name: ensure volume dir has correct permissions
+  file:
+    path: /opt/ghost
+    state: directory
+    recurse: yes
+    owner: lsio
+    group: root
+    mode: 0755
+
+- name: copy config.js for ghost into place
+  copy:
+    src: opt/ghost/config.js
+    dest: /opt/ghost/config.js
+    owner: lsio
+    group: root
+    mode: 0644
+
 - name: setup lsio site ghost container
   docker_container:
     name: lsio_ghost
     image: ghost
     state: started
-    restart: always
+    restart_policy: always
     ports:
       - "80:2368"
       - "443:443"
