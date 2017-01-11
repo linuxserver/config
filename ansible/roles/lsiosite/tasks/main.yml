@@ -1,6 +1,8 @@
 ---
 - name: install pre-reqs
   include: pre-reqs.yml
+  tags: 
+    - upgrade_site
 
 - name: ensure volume dir has correct permissions
   file:
@@ -10,6 +12,8 @@
     owner: lsio
     group: root
     mode: 0755
+  tags:
+    - upgrade_site
 
 - name: copy config.js for ghost into place
   copy:
@@ -18,6 +22,9 @@
     owner: lsio
     group: root
     mode: 0644
+  tags:
+    - upgrade_site
+
 
 - name: setup lsio site ghost container
   docker_container:
@@ -32,3 +39,5 @@
       - /opt/ghost:/var/lib/ghost
     env:
       NODE_ENV: production
+  tags:
+    - upgrade_site
