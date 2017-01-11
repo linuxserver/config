@@ -15,6 +15,8 @@
     - mc
     - ncdu
     - python3
+    - python-dev
+    - python-pip
     - python-setuptools
     - screen
     - sudo
@@ -22,7 +24,11 @@
     - tree
     - wget
 
+- name: Make sure pip upgraded (fixes docker-py errors)
+  command: easy_install -U pip
+
 - name: install docker-py
-  easy_install:
+  pip:
     name: docker-py
-    state: latest
+    state: present
+    extra_args: -U
