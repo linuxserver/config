@@ -1,0 +1,32 @@
+- name: ensure volume dir has correct permissions
+  file:
+    path: /opt/{{ item }}
+    state: directory
+    recurse: yes
+    owner: lsio
+    group: root
+    mode: 0755
+  with_items:
+    - rocketchat/mongo
+
+- name: setup mongo instance for rocketchat
+  docker_container:
+    name: lsio_rocketchat_mongodb
+    image: mongo
+    state: started
+    restart_policy: always
+    volumes:
+      - /opt/rocketchat/mongo:/data/db
+
+- name: setup lsio rocketchat docker container
+  docker_container:
+    name: lsio_rocketchat
+    image: rocket.chat
+    state: started
+    restart_policy: always
+    ports:
+      - "3000:3000"
+    links:
+      - lsio_rocketchat_mongodb:db
+    env:
+      ROOT_URL: http://chat.linuxserver.io

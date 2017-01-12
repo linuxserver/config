@@ -9,6 +9,7 @@
     - docker
     - lsiousers
     - lsiosite
+    - lsiochat
     #- ssh
     #- docker
     #- lsiosite

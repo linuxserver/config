@@ -1,0 +1,15 @@
+---
+- name: install pre-reqs
+  include: pre-reqs.yml
+
+- name: setup rocketchat
+  include: rocketchat.yml
+  when: rocketchat
+
+- name: setup mattermost
+  include: mattermost.yml
+  when: mattermost
+
+# - name: setup discourse
+#   include: discourse.yml
+#   when: discourse

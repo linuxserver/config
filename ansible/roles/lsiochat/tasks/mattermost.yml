@@ -1,0 +1,25 @@
+- name: ensure volume dir has correct permissions
+  file:
+    path: /opt/mattermost/{{ item }}
+    state: directory
+    recurse: yes
+    owner: lsio
+    group: root
+    mode: 0755
+  with_items:
+    - web
+    - config
+    - data
+    - db
+    - app
+
+- name: copy mattermost docker-compose file into place
+  copy:
+    src: opt/mattermost/docker-compose.yml
+    dest: /opt/mattermost/docker-compose.yml
+    owner: lsio
+    group: root
+    mode: 0644
+
+- name: docker-compose up for mattermost
+  command: docker-compose -f /opt/mattermost/docker-compose.yml up -d
