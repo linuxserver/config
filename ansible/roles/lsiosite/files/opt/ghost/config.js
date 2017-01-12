@@ -14,7 +14,7 @@ config = {
         url: 'https://www.linuxserver.io',
         mail: {
             transport: 'SMTP',
-            from: '"LinuxServer Team" <info@linuxserver.io>',
+            from: '"LinuxServer Team" <webmaster@linuxserver.io>',
             options: {
                 service: 'Mailgun',
                 auth: {
