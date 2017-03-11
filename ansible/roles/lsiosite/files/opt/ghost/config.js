@@ -14,12 +14,12 @@ config = {
         url: 'https://www.linuxserver.io',
         mail: {
             transport: 'SMTP',
-            from: '"LinuxServer Team" <webmaster@linuxserver.io>',
+            from: 'Needs From Address',
             options: {
                 service: 'Mailgun',
                 auth: {
-                    user: 'postmaster@linuxserver.io',
-                    pass: '8ccd8fa5e04f6a85421a6cce0b4d5229'
+                    user: 'Needs Username',
+                    pass: 'Needs Password'
                 }
             }
         },
